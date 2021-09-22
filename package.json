@@ -3,11 +3,16 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --prod"
+  },
+  "engines": {
+    "node": "12.18.3",
+    "npm": "6.14.6"
   },
   "private": true,
   "dependencies": {
@@ -26,6 +31,7 @@
     "@zxing/ngx-scanner": "3.0",
     "angular2-qrscanner": "^1.0.7",
     "crypto-js": "^4.1.1",
+    "express": "^4.17.1",
     "file-saver": "^2.0.5",
     "highcharts": "^9.2.2",
     "highcharts-angular": "^2.10.0",
@@ -33,6 +39,7 @@
     "jspdf": "^2.4.0",
     "jsqr": "^1.4.0",
     "ngx-pagination": "^5.1.1",
+    "path": "^0.12.7",
     "pdfmake": "^0.2.2",
     "rxjs": "~6.5.5",
     "sweetalert2": "^11.1.5",
