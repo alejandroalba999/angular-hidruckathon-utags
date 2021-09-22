@@ -1,0 +1,58 @@
+<div class="p-2 animated fadeIn">
+    <form #contacto="ngForm">
+        <div class="container mt-5 mb-5">
+            <div class="card animated fadeIn card-shadow radio">
+                <div class="card-body">
+
+                    <h4 class="card-tittle text-center mb-5" style="color: #102E8A;">Imprime tu gafete para el evento</h4>
+                    <div id="gafete" #screen class="row justify-content-center">
+                        <div class="col-md-4 col-sm-12 mb-2">
+                            <div class="card shadow radio">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <br>
+                                        <div class="col-md-12 mt-3 text-center">
+                                            <label style="color: #102E8A;">NETWORKING</label> <br>
+                                            <label class="mb-5" style="color: #102E8A;">“Modelo de Formación Dual”</label>
+                                        </div>
+                                    </div>
+                                    <div class="row grad">
+                                        <div class="row text-center" style="color: #ffffff;">
+                                            <div class="col-md-4">
+                                                <h2>23 SEP 2021</h2>
+                                            </div>
+                                            <div class="col-md-4 mt-2 mb-1">
+                                                <ngx-qrcode [value]="idPersona" [scale]='2' cssClass="aclass" errorCorrectionLevel="L">
+                                                </ngx-qrcode>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <h2>24 SEP 2021</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 mt-3 mb-4" style="text-align: center;">
+                                        <label for="" style="color: #102E8A; font-size: larger;">{{Participante.strNombre}} {{Participante.strPrimerApellido}}</label><br>
+                                        <label class="mb-3" for="">{{Participante.strNombreEmpresa}}</label>
+                                        <br>
+                                        <label for="" style="color: #102E8A; font-size: small;">Invitado</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ----------------------------------------------  -->
+                    </div>
+
+                    <div class="button-row mt-5 text-center">
+                        <button class=" btn ml-auto js-btn-next " preventDoubleSubmit (click)="downloadPDF()" style="background-color: #102E8A; color: #ffffff; cursor: pointer;" type="button "> <i class="fa fa-download " aria-hidden="true "></i> Descargar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div id="download">
+    <img #canvas>
+    <a #downloadLink></a>
+</div>

@@ -1,0 +1,58 @@
+<div class="p-2 animated fadeIn">
+    <form #contacto="ngForm">
+        <div class="container mt-5 mb-5">
+            <div class="card animated fadeIn card-shadow radio">
+                <div class="card-body">
+
+                    <h4 class="card-tittle text-center mb-5" style="color: #102E8A;">Asistencia</h4>
+                    <div class="col-sm-12 col-12 mb-4">
+                        <input [(ngModel)]="searchText" type="text" (ngModelChange)="search()" name="searchText" class="form-control form-control-sm f-search" placeholder=" Buscar conferencia...">
+                    </div>
+                    <div class="row">
+                        <div *ngFor="let conferencias of arrConferencias; let i = index" class="col-md-4 col-sm-12 mb-2">
+                            <div class="card shadow radio">
+                                <div class="card-body animated fadeIn ">
+                                    <div class="row">
+                                        <br>
+                                        <div class="col-md-12 text-center">
+                                            <label class="mb-5 noselect" style="color: #102E8A;">{{conferencias.strNombre}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="row grad">
+                                        <div class="row text-center" style="color: #ffffff;">
+                                            <div class="col-md-4">
+                                                <h2>
+                                                    <h1>{{conferencias.dteFechaInicio | date: 'dd'}} SEP 2021 </h1>
+                                                </h2>
+                                            </div>
+                                            <div class="col-md-4 mt-3"><img [src]="!conferencias.strRutaImagen ? strImagen : url+'imgConferencista/'+ conferencias.strRutaImagen" class="profile-pic"></div>
+                                            <div class="col-md-4">
+                                                <h2>Inicia
+                                                    <h1>{{conferencias.dteFechaInicio | date: 'hh a'}} </h1>
+                                                </h2>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 mt-3" style="text-align: center;">
+                                        <label for="" style="color: #102E8A; font-size: larger;">{{conferencias.strNombreConferencista}}</label><br>
+                                        <label class="mb-3" for="">{{conferencias.strPuesto}}</label>
+                                        <br>
+                                        <i class="fa fa-eye mt-3" style="color: #102E8A;" aria-hidden="true"></i><br>
+                                        <label for="" style="color: #102E8A;">{{conferencias.numParticipantes}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ----------------------------------------------  -->
+                    </div>
+
+                    <!-- <div class="button-row d-flex mt-5">
+                        <button (click)="stepsForm(1)" class="btn btn-secondary js-btn-prev" type="button" style="cursor: pointer;"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i> Anterior</button>
+                        <button class="btn  ml-auto js-btn-next" [disabled]="arrIdConferencia.length < 1" (click)="registrar()" style="background-color: #102E8A; color: #ffffff; cursor: pointer;" type="button"> <i class="fa fa-save" aria-hidden="true"></i> Registrarse</button>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

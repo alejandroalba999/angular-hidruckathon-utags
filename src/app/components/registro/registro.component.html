@@ -1,0 +1,279 @@
+<div [hidden]="!step1" class="p-2 animated fadeIn">
+    <form #generales="ngForm">
+        <div class="col-md-8 container mt-4 mb-5">
+            <div class="card animated fadeIn card-shadow radio">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-12" style="text-align: center;">
+                                    <img src="./assets/images/LogoPrincpal.png" style="width: 100px;">
+                                    <h4 id="title" class="card-title text-center" style="color: #102E8A;">NETWORKING
+                                        <br> “Modelo de Formación Dual”​
+                                    </h4>
+                                    <h4 class="card-tittle text-center" style="color: #102E8A;">Registro</h4>
+                                </div>
+                                <div class="col-md-12 mt-4">
+                                    <div class="tab-content" id="nav-tabContent">
+                                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+                                            aria-labelledby="nav-home-tab">
+                                            <form>
+                                                <div class="form-row">
+                                                    <div class="col-12 col-sm-6 mt-2">
+                                                        <label class="card-subtitle mb-1">Nombre(s)</label>
+                                                        <input type="text" class="form-control form-control-sm"
+                                                            placeholder="Ingresa tu nombre(s) completo(s)"
+                                                            [ngClass]="{ 'is-invalid': !strNombre.valid && strNombre.touched  }"
+                                                            name="strNombre" [(ngModel)]="RegistroModel.strNombre"
+                                                            required #strNombre="ngModel" required>
+                                                        <div class="invalid-feedback"
+                                                            *ngIf="strNombre.errors?.required">
+                                                            <small>Es necesario ingresar un Nombre.</small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-6 mt-2">
+                                                        <label class="card-subtitle mb-1">Primer Apellido</label>
+                                                        <input type="text" class="form-control form-control-sm"
+                                                            placeholder="Ingresa tu primer apellido"
+                                                            [ngClass]="{'is-invalid': !strPrimerApellido.valid && strPrimerApellido.touched  }"
+                                                            name="strPrimerApellido"
+                                                            [(ngModel)]="RegistroModel.strPrimerApellido" required
+                                                            #strPrimerApellido="ngModel">
+                                                        <div class="invalid-feedback"
+                                                            *ngIf="strPrimerApellido.errors?.required">
+                                                            <small>Es necesario ingresar un Primer Apellido.</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row mt-2">
+                                                    <div class="col-12 col-sm-6 mt-2">
+                                                        <label class="card-subtitle mb-1">Segundo
+                                                            Apellido(Opcional)</label>
+                                                        <input type="text" class="form-control form-control-sm"
+                                                            placeholder="Ingresa tu segundo apellido"
+                                                            name="strSegundoApellido">
+                                                    </div>
+                                                    <div class="col-12 col-sm-6 mt-2">
+                                                        <label class="card-subtitle mb-1">Puesto que desempeñas</label>
+                                                        <input type="text" class="form-control form-control-sm"
+                                                            placeholder="Ingresa tu puesto"
+                                                            [ngClass]="{'is-invalid': !strPuesto.valid && strPuesto.touched }"
+                                                            name="strPuesto" [(ngModel)]="RegistroModel.strPuesto"
+                                                            required #strPuesto="ngModel">
+                                                        <div class="invalid-feedback"
+                                                            *ngIf="strPuesto.errors?.required">
+                                                            <small>Es necesario ingresar tu puesto.</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row mt-2">
+                                                    <div class="col-12 col-sm-12 mt-2">
+                                                        <label class="card-subtitle mb-1">¿De dónde nos visitas?</label>
+                                                        <input type="text" class="form-control form-control-sm"
+                                                            placeholder="Nombre de empresa / institución de educación superior / dependencia gubernamental a la que pertenece"
+                                                            [ngClass]="{'is-invalid': !strNombreEmpresa.valid && strNombreEmpresa.touched }"
+                                                            name="strNombreEmpresa"
+                                                            [(ngModel)]="RegistroModel.strNombreEmpresa" required
+                                                            #strNombreEmpresa="ngModel">
+                                                        <div class="invalid-feedback"
+                                                            *ngIf="strNombreEmpresa.errors?.required">
+                                                            <small>Es necesario el lugar de donde nos visitas.</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row mt-2">
+                                                    <div class="col-12 col-sm-6 mt-2">
+                                                        <label class="card-subtitle mb-1">Teléfono</label>
+                                                        <input type="text" class="form-control form-control-sm"
+                                                            placeholder="Ingresa tu teléfono"
+                                                            onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
+                                                            maxlength="10"
+                                                            [ngClass]="{'is-invalid': !nmbTelefono.valid && nmbTelefono.touched}"
+                                                            name="nmbTelefono" [(ngModel)]="RegistroModel.nmbTelefono"
+                                                            required #nmbTelefono="ngModel">
+                                                        <div class="invalid-feedback"
+                                                            *ngIf="nmbTelefono.errors?.required">
+                                                            <small>Es necesario ingresar un Teléfono.</small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-6 mt-2">
+                                                        <label class="card-subtitle mb-1">Correo Electrónico</label>
+                                                        <input pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                                                            type="email" class="form-control form-control-sm"
+                                                            placeholder="Ingresa tu correo electrónico"
+                                                            [ngClass]="{'is-invalid': !strCorreo.valid && strCorreo.touched}"
+                                                            name="strCorreo" [(ngModel)]="RegistroModel.strCorreo"
+                                                            required #strCorreo="ngModel">
+                                                        <div class="invalid-feedback"
+                                                            *ngIf="strCorreo.errors?.required">
+                                                            <small>Es necesario ingresar un Correo Electrónico.</small>
+                                                        </div>
+                                                        <div class="bad-pattern" *ngIf="strCorreo.errors?.pattern">
+                                                            <small>El correo electrónico es inválido.
+                                                                (example@direccion.com)</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="button-row d-flex mt-5">
+                                                    <button class="btn  ml-auto js-btn-next"
+                                                        [disabled]="strNombre.invalid || strPrimerApellido.invalid || strPuesto.invalid || strNombreEmpresa.invalid || nmbTelefono.invalid || strCorreo.invalid"
+                                                        (click)="stepsForm(2)"
+                                                        style="background-color: #102E8A; color: #ffffff; cursor: pointer;"
+                                                        type="button"> <i class="fa fa-save" aria-hidden="true"></i>
+                                                        Guardar</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<!--Conferencias-->
+<div [hidden]="!step2" class="p-2 animated fadeIn">
+    <form #contacto="ngForm">
+        <div class="container mt-5 mb-5">
+            <div class="card animated fadeIn card-shadow radio">
+                <div class="card-body">
+
+                    <h4 class="card-tittle text-center mb-5" style="color: #102E8A;">Selecciona las conferencias de tu
+                        interés</h4>
+                    <div class="row">
+                        <div *ngFor="let conferencias of arrConferencias; let i = index"
+                            class="col-md-4 col-sm-12 mb-2">
+                            <div class="card shadow radio">
+                                <div class="card-body animated fadeIn ">
+                                    <div class="row">
+                                        <div class="col-md-12 text-right">
+                                            <input class="form-check-input" type="checkbox"
+                                                (change)="onCategoriaPressed(conferencias,$event.target.checked)"
+                                                value="" id="flexCheckDefault">
+                                        </div>
+                                        <br>
+                                        <div class="col-md-12 text-center">
+                                            <label class="mb-5 noselect"
+                                                style="color: #102E8A;">{{conferencias.strNombre}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="row grad">
+                                        <div class="row text-center" style="color: #ffffff;">
+                                            <div class="col-md-4">
+                                                <h2>
+                                                    <h1>{{conferencias.dteFechaInicio | date: 'dd'}} SEP 2021 </h1>
+                                                </h2>
+                                            </div>
+                                            <div class="col-md-4 mt-3"><img
+                                                    [src]="!conferencias.strRutaImagen ? strImagen : url+'imgConferencista/'+ conferencias.strRutaImagen"
+                                                    class="profile-pic"></div>
+                                            <div class="col-md-4">
+                                                <h2>Inicia
+                                                    <h1>{{conferencias.dteFechaInicio | date: 'hh a'}} </h1>
+                                                </h2>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 mt-3" style="text-align: center;">
+                                        <label for=""
+                                            style="color: #102E8A; font-size: larger;">{{conferencias.strNombreConferencista}}</label><br>
+                                        <label class="mb-3" for="">{{conferencias.strPuesto}}</label>
+                                        <br>
+                                        <label for="" style="font-size: small;">{{conferencias.strDescripcion}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ----------------------------------------------  -->
+                    </div>
+
+                    <div class="button-row d-flex mt-5">
+                        <button (click)="stepsForm(1)" class="btn btn-secondary js-btn-prev" type="button"
+                            style="cursor: pointer;"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+                            Anterior</button>
+                        <button class="btn  ml-auto js-btn-next" preventDoubleSubmit
+                            [disabled]="arrIdConferencia.length < 1" (click)="registrar()"
+                            style="background-color: #102E8A; color: #ffffff; cursor: pointer;" type="button"> <i
+                                class="fa fa-save" aria-hidden="true"></i> Registrarse</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+<!-- Codigo QR -->
+<div *ngIf="show" class="p-2 animated fadeIn">
+    <form #contacto="ngForm">
+        <div class="container mt-5 mb-5">
+            <div class="card animated fadeIn card-shadow radio">
+                <div class="card-body">
+
+                    <h4 class="card-tittle text-center mb-5" style="color: #102E8A;">Imprime tu gafete para el evento
+                    </h4>
+                    <div id="gafete" #screen class="row justify-content-center">
+                        <div class="col-md-4 col-sm-12 mb-2">
+                            <div class="card shadow radio">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <br>
+                                        <div class="col-md-12 mt-3 text-center">
+                                            <label style="color: #102E8A;">Networking</label> <br>
+                                            <label class="mb-5" style="color: #102E8A;">“Modelo de Formación
+                                                Dual”</label>
+                                        </div>
+                                    </div>
+                                    <div class="row grad">
+                                        <div class="row text-center" style="color: #ffffff;">
+                                            <div class="col-md-4">
+                                                <h2>23 SEP 2021</h2>
+                                            </div>
+                                            <div class="col-md-4 mt-2 mb-1">
+                                                <ngx-qrcode [value]="idPersona" [scale]='2' cssClass="aclass"
+                                                    errorCorrectionLevel="L">
+                                                </ngx-qrcode>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <h2>24 SEP 2021</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 mt-3 mb-4" style="text-align: center;">
+                                        <label for=""
+                                            style="color: #102E8A; font-size: larger;">{{ConferenciaModel2.strNombre}}
+                                            {{ConferenciaModel2.strPrimerApellido}}</label><br>
+                                        <label class="mb-3" for="">{{ConferenciaModel2.strNombreEmpresa}}</label>
+                                        <br>
+                                        <label for="" style="color: #102E8A; font-size: small;">Invitado</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ----------------------------------------------  -->
+                    </div>
+
+                    <div class="button-row mt-5 text-center">
+                        <button class=" btn ml-auto js-btn-next " preventDoubleSubmit (click)="downloadPDF()"
+                            style="background-color: #102E8A; color: #ffffff; cursor: pointer;" type="button "> <i
+                                class="fa fa-download " aria-hidden="true "></i> Descargar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div id="download">
+    <img #canvas>
+    <a #downloadLink></a>
+</div>

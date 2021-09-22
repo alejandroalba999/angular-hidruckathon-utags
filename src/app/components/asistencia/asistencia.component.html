@@ -1,0 +1,53 @@
+<div class="mine-container container">
+    <div class="card animated fadeIn card-shadow ">
+        <div class="card-body">
+            <div class="Animated FadeIn">
+                <div>
+                    <h5 class="text-center" style="color: #007bff;">Registro de Asistencia</h5>
+                </div>
+                <hr>
+                <div class="text-center">
+                    <div class="col-sm-12 col-12 mb-4">
+                        <div class="mensajeQR text-center">
+                            <i class="fas fa-qrcode fa-2x"></i>
+                            <p class="font-italic" style="font-size: small;">Lector de codígo QR</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div style="position: absolute; text-align: center;">
+                            <div *ngIf="this.succesRegister && this.strMensajeError.err == false"
+                                class="alert alert-success text-center m-2 p-0" role="alert">
+                                !Registro exitoso: {{this.strMensajeError.msg}}!
+                            </div>
+                            <div *ngIf="this.succesRegister && this.strMensajeError.err == true"
+                                class="alert alert-danger text-center m-2 p-0" role="alert">
+                                !Error: {{this.strMensajeError.msg}}!
+                            </div>
+                        </div>
+                        <div style="width: 100%; ">
+                            <div>
+                                <div id="reader" width="100%"></div>
+                                <select [(ngModel)]="this.selectConferencia" class="form-control form-control-sm"
+                                    id="inputGroupSelect02">
+                                    <option selected *ngFor="let confe of this.conferencias" [value]="confe._id">
+                                        {{confe.strNombre}}-{{confe.strNombreConferencista}}
+                                    </option>
+                                </select>
+                                <p class="fw-light" style="font-size:x-small; color: gray;">Recarga de las conferencias
+                                    en:
+                                    {{this.timeLeft}}</p>
+                                <hr>
+
+                                <div #video [ngClass]="{content: scanActive}" id="cameraPreview"
+                                    class=" cameraPreview img-thumbnail">
+                                </div>
+                                <canvas #canvas hidden></canvas>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

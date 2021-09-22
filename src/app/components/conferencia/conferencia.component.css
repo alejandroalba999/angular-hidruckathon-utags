@@ -1,0 +1,46 @@
+input[type="checkbox"] {
+    transform: scale(1.5, 1.5);
+}
+
+.gradient {
+    /* background: linear-gradient(top, red, gold); */
+    /* background-color: linear-gradient(top, red, gold); */
+    /* background-color: red; */
+    background: linear-gradient(-225deg, rgba(0, 0, 0, 0.6) 50%, rgba(0, 36, 61, 0.6) 80%),
+}
+
+.profile-pic {
+    border-radius: 100%;
+    height: 100px;
+    width: 100px;
+}
+
+img {
+    object-fit: cover;
+    border-radius: 5%;
+    /* margin-top: -10px;
+    margin-bottom: -10px; */
+}
+
+.radio {
+    border-radius: 20px 20px 20px 20px;
+}
+
+.grad {
+    background: linear-gradient(180deg, rgba(16, 46, 138, 1) 0%, rgba(16, 46, 138, 1) 35%, rgba(124, 136, 175, 1) 100%)!important;
+}
+
+.noselect {
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+}

@@ -1,0 +1,140 @@
+<div class="mine-container container mt-5 mb-5">
+    <div class="card animated fadeIn card-shadow ">
+        <div class="card-body">
+            <div class="Animated FadeIn">
+                <div>
+                    <h5 class="text-center" style="color: #007bff;">Reporte de Asistencia</h5>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6  text-center">
+                        <div class="row">
+                            <div class="col-sm scroll" id="scrolleable">
+                                <div id="pieChart" style="height: 350px; min-width: 60%; max-width: 100%; margin:0">
+                                </div>
+                                <!-- <div id="pieChart" style="width:100%; height:400px;"></div> -->
+                                <h5 class="card-title text-center"></h5>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6 text-center">
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center" scope="col">Conferencia</th>
+                                        <th class="text-center" scope="col">Numero de Asistencias</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-center">
+                                    <tr *ngFor="let conferen of this.data">
+                                        <td>{{conferen.name}}</td>
+                                        <td>{{conferen.data}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="text-center">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col-sm-12 col-12 mb-4">
+                                    <div class="input-group mb-3">
+                                        <input [(ngModel)]="termino" type="text" name="termino"
+                                            class="form-control form-control-sm f-search" placeholder="Buscar..."
+                                            (ngModelChange)="this.filtrar()">
+                                        <div class="input-group-append">
+                                            <button type="button" class="btn btn-primary btn-sm " id="dropdownReports"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                                [disabled]="this.participantes.length < 1"><i
+                                                    class="fa fa-download"></i></button>
+                                            <div class="dropdown-menu dropdown-menu-right shadow-lg "
+                                                aria-labelledby="dropdownReports">
+                                                <div class="dropdown-header text-primary "><span
+                                                        class="text-xs text-uppercase ">EXPORTAR</span>
+                                                </div>
+                                                <a (click)="this.exportPDF()" type="button"
+                                                    class="dropdown-item drop-options-text pdf "><i
+                                                        class="far fa-file-pdf mr-2 pdf"></i>PDF</a>
+                                                <a (click)="this.exportXLSX()" type="button"
+                                                    class="dropdown-item drop-options-text excel"><i
+                                                        class="far fa-file-excel mr-2 excel"></i>Excel</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="row">
+                                <div class="col-sm-12 col-12 mb-4">
+                                    <div class="input-group mb-3">
+                                        <select class="form-control form-control-sm text-center" id="inputGroupSelect02"
+                                            (change)="findParticipantesConferencia($event.target.value)">
+                                            <option selected value="0">Todos los
+                                                participantes</option>
+                                            <option *ngFor="let conf of this.conferencias" [value]="conf._id">
+                                                {{conf.strNombre}}-{{conf.strNombreConferencista}}
+                                            </option>
+                                        </select>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Empresa/Institución/Dependencia</th>
+                                    <th scope="col">Puesto</th>
+                                    <th scope="col">Correo Electrónico</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngIf="this.participantes.length > 0">
+                                <tr
+                                    *ngFor="let participante of this.participantes | paginate: { itemsPerPage: 5, currentPage: p1, id: 'first' }">
+                                    <td>{{participante.strNombre ? participante.strNombre : ''}}
+                                        {{participante.strPrimerApellido ? participante.strPrimerApellido : '' }}
+                                        {{participante.strSegundoApellido ? participante.strSegundoApellido : '' }}
+                                    </td>
+                                    <td>{{participante.strNombreEmpresa ? participante.strNombreEmpresa : ''}}</td>
+                                    <td>{{participante.strPuesto ? participante.strPuesto : ''}}</td>
+                                    <td>{{participante.strCorreo ? participante.strCorreo : ''}}</td>
+                                </tr>
+                            </tbody>
+                            <tbody *ngIf="this.participantes.length < 1">
+                                <tr>
+                                    <td colspan="14">
+                                        <div class="alert-dismissible text-center" style="padding: .75rem 1.25rem;">
+                                            <i class="fa fa-frown-o fa-2x" aria-hidden="true"></i>
+                                            <h5 style="height: 100%;width: 100%;">¡NO HAY REGISTROS PARA MOSTRAR!
+                                            </h5>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th scope="col">Total participantes: {{this.participantes.length}}</th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <pagination-controls (pageChange)="p1 = $event" id="first"></pagination-controls>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

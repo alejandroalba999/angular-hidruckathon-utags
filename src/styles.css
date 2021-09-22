@@ -1,0 +1,52 @@
+    /* .animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.fast {
+    -webkit-animation-duration: 0.4s;
+    animation-duration: 0.4s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+}
+
+.highcharts-credits {
+    pointer-events: none;
+    color: white !important;
+    fill: white !important;
+}
+
+.mine-container {
+    padding-top: 110px;
+    padding-bottom: 90px;
+}
+
+@media (max-width:768px) {
+    .mine-container {
+        padding-top: 30px;
+        padding-bottom: 90px;
+    }
+}
+
+.card-shadow {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.541), 0 6px 20px 0 rgba(0, 0, 0, 0.479);
+} */
+    /* .background {
+        width: 100%;
+        height: auto;
+    } */
