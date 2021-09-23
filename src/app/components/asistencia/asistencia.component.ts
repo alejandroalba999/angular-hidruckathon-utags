@@ -42,6 +42,8 @@ export class AsistenciaComponent implements OnInit {
     this.medias.video = true;
     navigator.mediaDevices.getUserMedia(this.medias).then(
       (localStream: MediaStream) => {
+        this.videoElm.nativeElement.srcObject = localStream;
+        this.videoStart = true;
         this.checkImage();
       }
     ).catch(
@@ -69,7 +71,7 @@ export class AsistenciaComponent implements OnInit {
 
     ctx.drawImage(this.videoElm.nativeElement, 0, 0, WIDTH, HEIGHT)
     const imageData = ctx.getImageData(0, 0, WIDTH, HEIGHT)
-    const code = jsQR(imageData.data, imageData.width, imageData.height, { inversionAttempts: "onlyInvert" })
+    const code = jsQR(imageData.data, imageData.width, imageData.height, { inversionAttempts: 'dontInvert' })
     if (code) {
       this.audioBeep.play();
       const infoDecrypt = this._serviceDecript.decrypt(code.data);
