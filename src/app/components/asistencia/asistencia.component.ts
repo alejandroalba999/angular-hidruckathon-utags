@@ -40,18 +40,21 @@ export class AsistenciaComponent implements OnInit {
 
   startVideo() {
     this.medias.video = true;
-    navigator.mediaDevices.getUserMedia(this.medias).then(
-      (localStream: MediaStream) => {
-        this.videoElm.nativeElement.srcObject = localStream;
-        this.videoStart = true;
-        this.checkImage();
-      }
-    ).catch(
-      error => {
-        console.error(error);
-        this.videoStart = false;
-      }
-    );
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices.getUserMedia(this.medias).then(
+        (localStream: MediaStream) => {
+          this.videoElm.nativeElement.srcObject = localStream;
+          this.videoStart = true;
+          this.checkImage();
+        }
+      ).catch(
+        error => {
+          console.error(error);
+          this.videoStart = false;
+        }
+      );
+    }
+
   }
 
   stopVideo() {
