@@ -29,18 +29,17 @@ export class AsistenciaComponent implements OnInit {
   @ViewChild('canvas', { static: true }) canvasElm: ElementRef;
   videoStart = false;
   medias: MediaStreamConstraints = {
-    audio: false,
     video: {
       width: { min: 500, ideal: 800, max: 1000 },
       height: { min: 500, ideal: 800, max: 1000 },
-      facingMode: { exact: 'environment' }
+      facingMode: "enviroment"
     }
   };
   constructor(private rd: Renderer2, private _serviceDecript: StorageService, private _conferencia: ConferenciaService, private _assitencia: AsistenciaService) { }
 
 
   startVideo() {
-    this.medias.video = true;
+    // this.medias.video = true;
     navigator.mediaDevices.getUserMedia(this.medias).then(
       (localStream: MediaStream) => {
         this.videoElm.nativeElement.srcObject = localStream;
@@ -72,7 +71,7 @@ export class AsistenciaComponent implements OnInit {
 
     ctx.drawImage(this.videoElm.nativeElement, 0, 0, WIDTH, HEIGHT)
     const imageData = ctx.getImageData(0, 0, WIDTH, HEIGHT)
-    const code = jsQR(imageData.data, imageData.width, imageData.height, { inversionAttempts: "dontInvert" })
+    const code = jsQR(imageData.data, imageData.width, imageData.height, { inversionAttempts: "onlyInvert" })
     if (code) {
       this.audioBeep.play();
       const infoDecrypt = this._serviceDecript.decrypt(code.data);
