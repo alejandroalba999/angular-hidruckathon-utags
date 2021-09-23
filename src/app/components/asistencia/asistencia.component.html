@@ -1,4 +1,4 @@
-<div class="mine-container container">
+<div class="mine-container container mt-5">
     <div class="card animated fadeIn card-shadow ">
         <div class="card-body">
             <div class="Animated FadeIn">
@@ -14,16 +14,6 @@
                         </div>
                     </div>
                     <div>
-                        <div style="position: absolute; text-align: center;">
-                            <div *ngIf="this.succesRegister && this.strMensajeError.err == false"
-                                class="alert alert-success text-center m-2 p-0" role="alert">
-                                !Registro exitoso: {{this.strMensajeError.msg}}!
-                            </div>
-                            <div *ngIf="this.succesRegister && this.strMensajeError.err == true"
-                                class="alert alert-danger text-center m-2 p-0" role="alert">
-                                !Error: {{this.strMensajeError.msg}}!
-                            </div>
-                        </div>
                         <div style="width: 100%; ">
                             <div>
                                 <div id="reader" width="100%"></div>
@@ -37,11 +27,20 @@
                                     en:
                                     {{this.timeLeft}}</p>
                                 <hr>
+                                <div class="img-thumbnail">
+                                    <div fxLayout="row wrap">
 
-                                <div #video [ngClass]="{content: scanActive}" id="cameraPreview"
-                                    class=" cameraPreview img-thumbnail">
+                                        <!-- Video -->
+                                        <div class="video-row" fxFlex="150">
+                                            <video class="video" id="video" #video autoplay playsinline></video>
+                                        </div>
+                                        <!-- Canvas -->
+                                        <div fxFlex="150" style="display:none;">
+                                            <canvas class="video" id="canvas" #canvas></canvas>
+                                        </div>
+                                    </div>
                                 </div>
-                                <canvas #canvas hidden></canvas>
+
                             </div>
                         </div>
 

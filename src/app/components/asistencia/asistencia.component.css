@@ -1,4 +1,4 @@
-.card {
+/* .card {
     padding-top: 14px;
 }
 .video {
@@ -28,16 +28,30 @@
     content: '';
     position: absolute;
     /* background-image: url('../../../assets/images/qrAnimation.gif'), url('../../../assets/images/qrAnimationFondo.png'); */
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat;
     background-size: cover;
     background-size: 100% 100%;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-}
- 
+} */
+/*  
 :host ::ng-deep .videoElement {
     width: 100%;
     height: auto;
+} */ 
+
+.card {
+    padding-top: 14px;
+}
+.video {
+    width: 100%;
+    object-fit: cover;
+}
+.video-row {
+    padding-bottom: 10px;
+}
+#canvas {
+    width: 100%;
 }
