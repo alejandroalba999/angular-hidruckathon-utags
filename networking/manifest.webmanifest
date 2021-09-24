@@ -4,8 +4,8 @@
   "theme_color": "#1976d2",
   "background_color": "#1976d2",
   "display": "standalone",
-  "scope": "./",
-  "start_url": "./asistencia",
+  "scope": "./#/asistencia/",
+  "start_url": "./#/asistencia/",
   "permissions": {
     "audio-capture": {
       "description": "Required to capture audio using getUserMedia()"
