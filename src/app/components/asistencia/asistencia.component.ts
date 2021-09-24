@@ -21,6 +21,7 @@ export class AsistenciaComponent implements OnInit {
   conferencias: any = [];
   timeLeft: number = 60;
   interval;
+  front: boolean = false;
   selectConferencia: any;
   audioBeep = new Audio('assets/sounds/beep.mp3');
   audioSuccess = new Audio('assets/sounds/success-notification.wav');
@@ -32,7 +33,8 @@ export class AsistenciaComponent implements OnInit {
     video: {
       width: { min: 500, ideal: 800, max: 1000 },
       height: { min: 500, ideal: 800, max: 1000 },
-      facingMode: "environment"
+
+      facingMode: (this.front ? "user" : "environment")
     }
   };
   constructor(private rd: Renderer2, private _serviceDecript: StorageService, private _conferencia: ConferenciaService, private _assitencia: AsistenciaService) { }
