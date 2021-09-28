@@ -44,12 +44,13 @@
                         <div class="col-6">
                             <div class="row">
                                 <div class="col-sm-12 col-12 mb-4">
-                                    <div class="input-group mb-3">
+                                    <div class="input-group  input-group-sm">
                                         <input [(ngModel)]="termino" type="text" name="termino"
                                             class="form-control form-control-sm f-search" placeholder="Buscar..."
                                             (ngModelChange)="this.filtrar()">
                                         <div class="input-group-append">
-                                            <button type="button" class="btn btn-primary btn-sm " id="dropdownReports"
+
+                                            <button type="button" class="btn btn-primary btn-style" id="dropdownReports"
                                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                                 [disabled]="this.participantes.length < 1"><i
                                                     class="fa fa-download"></i></button>
@@ -58,13 +59,20 @@
                                                 <div class="dropdown-header text-primary "><span
                                                         class="text-xs text-uppercase ">EXPORTAR</span>
                                                 </div>
-                                                <a (click)="this.exportPDF()" type="button"
-                                                    class="dropdown-item drop-options-text pdf "><i
-                                                        class="far fa-file-pdf mr-2 pdf"></i>PDF</a>
-                                                <a (click)="this.exportXLSX()" type="button"
-                                                    class="dropdown-item drop-options-text excel"><i
-                                                        class="far fa-file-excel mr-2 excel"></i>Excel</a>
+                                                <div class="pdf">
+                                                    <a (click)="this.exportPDF()" type="button"
+                                                        class="dropdown-item drop-options-text"><i
+                                                            class="far fa-file-pdf mr-2"></i>PDF</a>
+                                                </div>
+                                                <div class="excel">
+                                                    <a (click)="this.exportXLSX()" type="button"
+                                                        class="dropdown-item drop-options-text"><i
+                                                            class="far fa-file-excel mr-2"></i>Excel</a>
+                                                </div>
+
                                             </div>
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -74,7 +82,8 @@
                             <div class="row">
                                 <div class="col-sm-12 col-12 mb-4">
                                     <div class="input-group mb-3">
-                                        <select class="form-control form-control-sm text-center" id="inputGroupSelect02"
+                                        <select class="form-control form-control-sm  text-center"
+                                            id="inputGroupSelect02"
                                             (change)="findParticipantesConferencia($event.target.value)">
                                             <option selected value="0">Todos los
                                                 participantes</option>
@@ -124,8 +133,8 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th scope="col">Total participantes: {{this.participantes.length}}</th>
-                                    <th scope="col"></th>
+                                    <th scope="col">Total participantes: </th>
+                                    <th scope="col">{{this.participantes.length}}</th>
                                     <th scope="col"></th>
                                     <th scope="col"></th>
                                 </tr>

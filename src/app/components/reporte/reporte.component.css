@@ -1,12 +1,17 @@
 .pdf:hover{
-    color:red
+    cursor: pointer;
+    color:red;
 }
 .excel:hover{
-    color:green
+    cursor: pointer;
+    color:green;
 }
 #dropdownReports{
   border-radius: 0% 15% 15% 0%;
 }
 .buttonForm{
     border-radius: 0% 20% 20% 0%;
+}
+.btn-style{
+ height: 32px;
 }
