@@ -92,14 +92,7 @@ export class AsistenciaComponent implements OnInit {
       }
     });
   }
-  reloadCamara() {
-    const cameraPreviewOptions: CameraPreviewOptions = {
-      position: 'back',
-      parent: 'cameraPreview',
-      className: 'cameraPreview'
-    };
-    this.startVideo(cameraPreviewOptions);
-  }
+
   stopVideo() {
     this.medias.video = false;
     this.videoElm.nativeElement.srcObject.getVideoTracks()[0].enabled = false;

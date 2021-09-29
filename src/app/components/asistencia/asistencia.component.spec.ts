@@ -8,11 +8,10 @@ describe('AsistenciaComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AsistenciaComponent]
+      declarations: [ AsistenciaComponent ]
     })
-      .compileComponents();
+    .compileComponents();
   }));
-
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AsistenciaComponent);
