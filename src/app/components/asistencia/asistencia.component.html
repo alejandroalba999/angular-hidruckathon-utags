@@ -19,8 +19,12 @@
                                 <div id="reader" width="100%"></div>
                                 <select [(ngModel)]="this.selectConferencia" class="form-control form-control-sm"
                                     id="inputGroupSelect02">
-                                    <option selected *ngFor="let confe of this.conferencias" [value]="confe._id">
-                                        {{confe.strNombre}}-{{confe.strNombreConferencista}}
+                                    <option selected *ngFor="let confe of this.conferencias" [value]="confe._id"
+                                        [ngStyle]="{'display': confe.participantesRestantes < 1 ? 'none' :'inline'}"
+                                        [disabled]="confe.participantesRestantes < 1">
+                                        {{confe.strNombre}}-{{confe.strNombreConferencista}} <p
+                                            style="text-align: center;">( Cupos restantes:
+                                            {{confe.participantesRestantes}} )</p>
                                     </option>
                                 </select>
                                 <p class="fw-light" style="font-size:x-small; color: gray;">Recarga de las conferencias
