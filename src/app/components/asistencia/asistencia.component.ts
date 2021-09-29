@@ -75,7 +75,7 @@ export class AsistenciaComponent implements OnInit {
             video: {
               width: { min: 500, ideal: 800, max: 1000 },
               height: { min: 500, ideal: 800, max: 1000 },
-              facingMode: { exact: 'environment' }
+              facingMode: 'environment'
             }
           }).then((stream) => {
             console.log('here2');
