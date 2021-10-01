@@ -182,6 +182,7 @@ export class AsistenciaComponent implements OnInit {
       this.conferencias = res.cont.conferencias;
       this.selectConferencia = res.cont.conferencias[0]._id;
     }).catch((err) => {
+      this.conferencias = [];
       console.log(err);
 
     })
