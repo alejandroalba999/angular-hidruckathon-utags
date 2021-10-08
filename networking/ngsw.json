@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1632944493635,
+  "timestamp": 1633726061460,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -13,7 +13,7 @@
       "urls": [
         "/favicon.ico",
         "/index.html",
-        "/main.98c9a6524e0e7b65054d.js",
+        "/main.20948b8e765e0b4efb15.js",
         "/manifest.webmanifest",
         "/polyfills.084fe423081ef39d7f49.js",
         "/runtime.e227d1a0e31cbccbf8ec.js",
@@ -71,7 +71,7 @@
     "/assets/icons/logo-icon.png": "264e9ec4a3f158f7a32c747fe270574abfec7d3f",
     "/assets/icons/logo-light-icon.png": "9eb903dc95dbb82bc5b7f0343e3121a1020b7b60",
     "/assets/images/8d0rghk1kkten5qot.jpg": "e47f1c60d3a95cdd21c32273b04799cb2505de02",
-    "/assets/images/LogoPrincpal.png": "b5919ebdc224c7db098d203d125b260a47373051",
+    "/assets/images/LogoPrincpal.png": "9f4b9f5bf02d99b66d285635b5cd93e5daef9e2b",
     "/assets/images/MicrosoftTeams-image.png": "90721b69bd70c95dff82daa6965285e702b6f26d",
     "/assets/img/conference.jpg": "6f7404fad2aab31d647b9c2ece30b98adf9f7577",
     "/assets/img/conference1.jpg": "90721b69bd70c95dff82daa6965285e702b6f26d",
@@ -82,8 +82,8 @@
     "/assets/sounds/success-notification.wav": "ef52621ce1645f3afb637754132fe5b55e8d25c5",
     "/assets/sounds/success-sound-effect.mp3": "69092181cc5eb1778d7b385005f413173a2014b5",
     "/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/index.html": "f0ee2ec3098631ac625bf4f5d9ca319434a4ca92",
-    "/main.98c9a6524e0e7b65054d.js": "4620575786effff0f1a4fd7b154d2f22026c6152",
+    "/index.html": "3f77f40d8bc1cdbe8574fa68691a791296b84e5d",
+    "/main.20948b8e765e0b4efb15.js": "073bcd62e89cb123be5bf97018d87a1b4c18a38b",
     "/manifest.webmanifest": "f9f799e1f657702b34c3083b65a6840a1e405273",
     "/polyfills.084fe423081ef39d7f49.js": "9b0821549747e05889d161d586b63e69ef8282bb",
     "/runtime.e227d1a0e31cbccbf8ec.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
