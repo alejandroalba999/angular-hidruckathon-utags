@@ -7,6 +7,8 @@ import { ReporteService } from 'src/app/services/reporte.service';
 import { ExportDataService } from '../../services/exports/export-excel.service.ts.service';
 import Swal from 'sweetalert2';
 import { ExportPdfService } from 'src/app/services/exports/export-pdf.service.ts.service';
+
+
 const Toast = Swal.mixin({
   toast: true,
   position: 'top-end',
@@ -21,6 +23,7 @@ offline(Highcharts);
   styleUrls: ['./reporte.component.css']
 })
 export class ReporteComponent implements OnInit {
+
   termino: any = "";
   data: any = []
   conferencias: any = [];
@@ -35,6 +38,7 @@ export class ReporteComponent implements OnInit {
     this.getParticipantes()
   }
   async getParticipantes() {
+    this.participantes = [];
     this._reporte.getParticipantes().then((res: any) => {
       this.participantes = res.cont.participantes;
       this.participantesFilter = res.cont.participantes;
@@ -45,7 +49,7 @@ export class ReporteComponent implements OnInit {
   }
 
   findParticipantesConferencia(idConferencia) {
-    this.p1=1;
+    this.p1 = 1;
     if (idConferencia == '0') {
       this.getParticipantes();
     } else {
@@ -81,6 +85,7 @@ export class ReporteComponent implements OnInit {
   }
 
   async getParticipantesConferencia() {
+    this.data = [];
     this._reporte.getParticipantesConferencias().then((res: any) => {
       const info = res.cont.conferencia;
       this.conferencias = res.cont.conferencia;
@@ -134,7 +139,7 @@ export class ReporteComponent implements OnInit {
   }
 
   filtrar() {
-    this.p1=1;
+    this.p1 = 1;
     this.participantes = this.FilterPipe.transform(this.participantesFilter, this.termino);
   }
   exportPDF() {
@@ -180,11 +185,11 @@ export class ReporteComponent implements OnInit {
         size: 13,
       }
     ];
-   
+
     const arrCategoria = this.participantes.map(resp => {
       return {
         strNombre: resp.strNombre ? resp.strNombre : '',
-        strApellidos: resp.strPrimerApellido ? resp.strPrimerApellido + ' '+ resp.strSegundoApellido : '',
+        strApellidos: resp.strPrimerApellido ? resp.strPrimerApellido + ' ' + resp.strSegundoApellido : '',
         strNombreEmpresa: resp.strNombreEmpresa ? resp.strNombreEmpresa : '',
         strPuesto: resp.strPuesto ? resp.strPuesto : '',
         strCorreo: resp.strCorreo ? resp.strCorreo : '',
@@ -211,13 +216,13 @@ export class ReporteComponent implements OnInit {
       if (this.participantes.length !== 0) {
         this.participantes = this.participantes.map(resp => {
 
-           return {
-        strNombre: resp.strNombre ? resp.strNombre : '',
-        strApellidos: resp.strPrimerApellido ? resp.strPrimerApellido + ' '+ resp.strSegundoApellido : '',
-        strNombreEmpresa: resp.strNombreEmpresa ? resp.strNombreEmpresa : '',
-        strPuesto: resp.strPuesto ? resp.strPuesto : '',
-        strCorreo: resp.strCorreo ? resp.strCorreo : '',
-      }
+          return {
+            strNombre: resp.strNombre ? resp.strNombre : '',
+            strApellidos: resp.strPrimerApellido ? resp.strPrimerApellido + ' ' + resp.strSegundoApellido : '',
+            strNombreEmpresa: resp.strNombreEmpresa ? resp.strNombreEmpresa : '',
+            strPuesto: resp.strPuesto ? resp.strPuesto : '',
+            strCorreo: resp.strCorreo ? resp.strCorreo : '',
+          }
         });
 
         let jsonobject = JSON.stringify(this.participantes);

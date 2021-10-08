@@ -1,0 +1,12 @@
+.form-lg{
+  display: none;
+}
+
+@media only screen and (min-width: 0px) and (max-width: 500px) {
+    .form-sm{
+        display: none;
+    }
+    .form-lg{
+        display: inline;
+    }
+}

@@ -137,6 +137,7 @@ export class AsistenciaComponent implements OnInit {
         })
 
       } else {
+        this.audioError.play();
         Swal.fire({ text: 'El cupón no es valído', icon: 'error', allowOutsideClick: false }).then((res) => {
           if (res.isConfirmed) {
             this.checkImage();
@@ -177,10 +178,16 @@ export class AsistenciaComponent implements OnInit {
     }, 1000)
   }
 
+  reloadConferencias() {
+    this.timeLeft = 60;
+    this.getConferencias();
+  }
+
   getConferencias() {
     this._conferencia.getConferenciasFecha().then((res: any) => {
       this.conferencias = res.cont.conferencias;
       this.selectConferencia = res.cont.conferencias[0]._id;
+
     }).catch((err) => {
       this.conferencias = [];
       console.log(err);

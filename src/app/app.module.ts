@@ -16,6 +16,8 @@ import { GafeteComponent } from './components/gafete/gafete.component';
 // import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { FilterPipe } from './pipes/filter.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { EncuestaComponent } from './components/encuesta/encuesta.component';
+import { PreguntasComponent } from './components/encuesta/preguntas/preguntas.component';
 
 
 
@@ -26,7 +28,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ConferenciaComponent,
     ReporteComponent,
     AsistenciaComponent,
-    GafeteComponent
+    GafeteComponent,
+    EncuestaComponent,
+    PreguntasComponent
   ],
   imports: [
     BrowserModule,

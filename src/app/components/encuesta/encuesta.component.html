@@ -1,0 +1,67 @@
+<div class="mine-container container " style="padding: 5%;">
+    <div class="card animated fadeIn card-shadow ">
+        <div class="card-body">
+            <div class="Animated FadeIn">
+                <div>
+                    <h5 class="text-center" style="color: #007bff;">Registro de encuesta</h5>
+                </div>
+                <hr>
+
+                <!-- Apartado validación Email -->
+                <div *ngIf="!this.correoValidado" class="text-center form-sm">
+                    <div class="input-group mb-3 p-5">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary btn-sm" type="button">Correo
+                                Electrónico</button>
+                        </div>
+                        <input type="text" class="form-control form-control-sm" [(ngModel)]="RegistroModel.strCorreo"
+                            placeholder="Ingresar correo electrónico" aria-label="Recipient's username"
+                            aria-describedby="basic-addon2" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                            [ngClass]="{'is-invalid': !strCorreo.valid && strCorreo.touched}" name="strCorreo"
+                            [(ngModel)]="RegistroModel.strCorreo" required #strCorreo="ngModel">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-primary btn-sm" id="Email-send" (click)="this.searchEmail()"
+                                type="button" [disabled]="!strCorreo.valid"><i
+                                    class="fas fa-paper-plane m-1"></i></button>
+                        </div>
+                    </div>
+                    <div class="invalid-feedback" *ngIf="strCorreo.errors?.required">
+                        <small>Es necesario ingresar un Correo Electrónico.</small>
+                    </div>
+                    <div class="bad-pattern" *ngIf="strCorreo.errors?.pattern">
+                        <small>El correo electrónico es inválido.
+                            (example@direccion.com)</small>
+                    </div>
+                </div>
+                <div *ngIf="!this.correoValidado" class="text-center form-lg">
+                    <label>Correo Electrónico</label>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control form-control-sm" [(ngModel)]="RegistroModel.strCorreo"
+                            placeholder="Ingresar correo electrónico" aria-label="Recipient's username"
+                            aria-describedby="basic-addon2" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                            [ngClass]="{'is-invalid': !strCorreo.valid && strCorreo.touched}" name="strCorreo"
+                            [(ngModel)]="RegistroModel.strCorreo" required #strCorreo="ngModel">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-primary btn-sm" id="Email-send" (click)="this.searchEmail()"
+                                type="button" [disabled]="!strCorreo.valid "><i
+                                    class="fas fa-paper-plane m-1"></i></button>
+                        </div>
+                    </div>
+                    <div class="invalid-feedback" *ngIf="strCorreo.errors?.required">
+                        <small>Es necesario ingresar un Correo Electrónico.</small>
+                    </div>
+                    <div class="bad-pattern" *ngIf="strCorreo.errors?.pattern">
+                        <small>El correo electrónico es inválido.
+                            (example@direccion.com)</small>
+                    </div>
+                </div>
+                <!-- Apartado validación Email -->
+                <div *ngIf="this.correoValidado">
+                    <app-preguntas [obtenerEncuestas]="this.encuestas"></app-preguntas>
+                </div>
+
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>

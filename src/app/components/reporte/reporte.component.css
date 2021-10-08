@@ -15,3 +15,9 @@
 .btn-style{
  height: 32px;
 }
+.icon-turn{
+    transition:  transform 0.3s;
+}
+.icon-turn:active{
+    transform: rotate(360deg);
+}

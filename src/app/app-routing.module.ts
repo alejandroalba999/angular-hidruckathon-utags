@@ -5,6 +5,7 @@ import { ConferenciaComponent } from './components/conferencia/conferencia.compo
 import { RegistroComponent } from './components/registro/registro.component';
 import { ReporteComponent } from './components/reporte/reporte.component';
 import { GafeteComponent } from './components/gafete/gafete.component';
+import { EncuestaComponent } from './components/encuesta/encuesta.component';
 
 const routes: Routes = [
   { path: 'registro', component: RegistroComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'reporte', component: ReporteComponent },
   { path: 'asistencia', component: AsistenciaComponent },
   { path: 'gafete/:idPersona', component: GafeteComponent },
+  { path: 'encuesta', component: EncuestaComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'registro' }
 ];
 

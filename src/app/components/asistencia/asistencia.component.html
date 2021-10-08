@@ -16,17 +16,24 @@
                     <div>
                         <div style="width: 100%; ">
                             <div>
-                                <div id="reader" width="100%"></div>
-                                <select [(ngModel)]="this.selectConferencia" class="form-control form-control-sm"
-                                    id="inputGroupSelect02">
-                                    <option selected *ngFor="let confe of this.conferencias" [value]="confe._id"
-                                        [disabled]="confe.participantesRestantes < 1">
-                                        {{confe.strNombre}}-{{confe.strNombreConferencista}} <p
-                                            style="text-align: center;">( Cupos restantes:
-                                            {{confe.participantesRestantes}} )</p>
-                                    </option>
-                                </select>
-                                <p class="fw-light" style="font-size:x-small; color: gray;">Recarga de las conferencias
+                                <div class="input-group">
+                                    <input *ngIf="this.conferencias.length < 1" disabled
+                                        class="form-control form-control-sm text-center" type="text"
+                                        placeholder="No existen conferencias para mostrar">
+                                    <select *ngIf="this.conferencias.length > 0" [(ngModel)]="this.selectConferencia"
+                                        class="form-control form-control-sm" id="inputGroupSelect02">
+                                        <option [selected]="conferencias[0]" *ngFor="let confe of this.conferencias"
+                                            [value]="confe._id" [disabled]="confe.participantesRestantes < 1">
+                                            {{confe.strNombre}}-{{confe.strNombreConferencista}} <p
+                                                style="text-align: center;">( Cupos restantes:
+                                                {{confe.participantesRestantes}} )</p>
+                                        </option>
+                                    </select>
+                                    <button type="button" class="btn btn-outline-primary btn-sm"
+                                        (click)="this.reloadConferencias()"><i class="fas fa-sync-alt"></i></button>
+                                </div>
+                                <p class="fw-light mt-2" style="font-size:x-small; color: gray;">Recarga de las
+                                    conferencias
                                     en:
                                     {{this.timeLeft}}</p>
                                 <hr>

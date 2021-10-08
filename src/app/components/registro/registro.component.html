@@ -7,11 +7,11 @@
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="col-md-12" style="text-align: center;">
-                                    <img src="./assets/images/LogoPrincpal.png" style="width: 100px;">
+                                    <img src="./assets/images/LogoPrincpal.png" style="width: 300px;">
                                     <div id="title" style="color: #102E8A;">
-                                        <h4 class="card-title text-center">NETWORKING</h4>
-                                        <p style="font-size: small;"> “Modelo de Formación Dual”​</p>
-                                        <hr>
+                                        <!-- <h4 class="card-title text-center">NETWORKING</h4> -->
+                                        <!-- <p style="font-size: small;"> “Modelo de Formación Dual”​</p> -->
+                                        <!-- <hr> -->
                                     </div>
                                     <h4 class="card-tittle text-center" style="color: #102E8A;">Registro</h4>
                                 </div>
@@ -117,9 +117,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="button-row d-flex mt-5">
-                                                    <button class="btn  ml-auto js-btn-next"
-                                                        [disabled]="strNombre.invalid || strPrimerApellido.invalid || strPuesto.invalid || strNombreEmpresa.invalid || nmbTelefono.invalid || strCorreo.invalid"
-                                                        (click)="stepsForm(2)"
+                                                    <button class="btn  ml-auto js-btn-next" (click)="stepsForm(2)"
                                                         style="background-color: #102E8A; color: #ffffff; cursor: pointer;"
                                                         type="button"> <i class="fa fa-save" aria-hidden="true"></i>
                                                         Guardar</button>
@@ -150,7 +148,7 @@
                         interés</h4>
                     <div class="row">
                         <div *ngFor="let conferencias of arrConferencias; let i = index"
-                            class="col-md-4 col-sm-12 mb-2">
+                            class="col-md-6 col-sm-12 mb-2">
                             <div class="card shadow radio">
                                 <div class="card-body animated fadeIn ">
                                     <div class="row">
@@ -161,24 +159,26 @@
                                         </div>
                                         <br>
                                         <div class="col-md-12 text-center">
-                                            <label class="mb-5 noselect"
-                                                style="color: #102E8A;">{{conferencias.strNombre}}</label>
+                                            <h3 class="mb-5 noselect" style="color: #102E8A;">{{conferencias.strNombre}}
+                                            </h3>
                                         </div>
                                     </div>
                                     <div class="row grad">
                                         <div class="row text-center" style="color: #ffffff;">
                                             <div class="col-md-4">
-                                                <h2>
-                                                    <h1>{{conferencias.dteFechaInicio | date: 'dd'}} SEP 2021 </h1>
-                                                </h2>
+                                                <h3>
+                                                    <h1 style="margin-top:10%">{{conferencias.dteFechaInicio | date:
+                                                        'dd'}} OCT 2021 </h1>
+                                                </h3>
                                             </div>
                                             <div class="col-md-4 mt-3"><img
                                                     [src]="!conferencias.strRutaImagen ? strImagen : url+'imgConferencista/'+ conferencias.strRutaImagen"
                                                     class="profile-pic"></div>
                                             <div class="col-md-4">
-                                                <h2>Inicia
-                                                    <h1>{{conferencias.dteFechaInicio | date: 'hh a'}} </h1>
-                                                </h2>
+                                                <h3>
+                                                    <h1 style="margin-top:10%">{{conferencias.dteFechaInicio | date:
+                                                        'hh:mm a'}} </h1>
+                                                </h3>
                                             </div>
                                         </div>
                                     </div>
