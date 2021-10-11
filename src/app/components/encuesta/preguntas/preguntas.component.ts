@@ -47,7 +47,7 @@ export class PreguntasComponent implements OnInit {
 
     }
 
-    console.log(resp);
+    console.log(nPregunta + this.arrayRespuestas.length);
 
     const preguntaEncontrada = this.arrayRespuestas.find((res) => res.numeroEncuesta == nEncuesta && res.numeroPregunta == nPregunta)
     if (preguntaEncontrada && this.arrayRespuestas.length > 0) {
