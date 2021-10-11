@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild} from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { RegistroModel } from '../../models/registro.model';
 import { ConferenciaModel } from '../../models/conferencia.model';
 import { ConferenciaService } from '../../services/conferencia.service';
@@ -35,7 +35,7 @@ export class RegistroComponent implements OnInit {
   step2: boolean = false;
   show: boolean = false;
   arrConferencias: any[];
-  
+
   url = `${environment.muestraImagen}`;
   strImagen = './assets/images/default.jpg';
   arrIdConferencia: any[] = [];
@@ -49,29 +49,29 @@ export class RegistroComponent implements OnInit {
   }
 
   stepsForm(valor: number) {
-    if(valor === 1){
+    if (valor === 1) {
       this.step1 = true;
       this.step2 = false;
     }
-    if(valor === 2) {
+    if (valor === 2) {
       this.step1 = false;
       this.step2 = true;
     }
   }
 
-  getConferencias(){
+  getConferencias() {
     this.ConferenciaService.getConferencias().then((data: any) => {
-    this.ConferenciaModel = data.cont.conferencias;
-    this.arrConferencias = data.cont.conferencias;
+      this.ConferenciaModel = data.cont.conferencias;
+      this.arrConferencias = data.cont.conferencias;
     })
   }
 
-  onCategoriaPressed(categoriaSelected: any, checked: boolean){
-    if (checked) { 
+  onCategoriaPressed(categoriaSelected: any, checked: boolean) {
+    if (checked) {
       this.arrIdConferencia.push(categoriaSelected);
       // console.log(this.arrIdConferencia);
-      
-    } else { 
+
+    } else {
       this.arrIdConferencia.splice(this.arrIdConferencia.indexOf(categoriaSelected), 1);
       // console.log(this.arrIdConferencia);
     }
@@ -90,19 +90,19 @@ export class RegistroComponent implements OnInit {
 
       if (this.arrIdConferencia !== null) {
         // console.log(this.arrIdConferencia);
-        
+
         for (const arrIdConferencia of this.arrIdConferencia) {
           RegistroModel.append('arrIdConferencia', arrIdConferencia._id);
         }
       }
-      
+
       const resp: any = await this.RegistroService.postParticipante(RegistroModel);
-      
+
       this.ConferenciaModel2 = resp.cont.participante;
       this.idPersona = this.ConferenciaModel2._id;
-      this.idPersona = this.StorageService.encrypt(this.idPersona);  
+      this.idPersona = this.StorageService.encrypt(this.idPersona);
       console.log(this.idPersona);
-         
+
       this.step1 = false;
       this.step2 = false;
       this.show = true;
@@ -113,10 +113,10 @@ export class RegistroComponent implements OnInit {
         'success'
       )
     } catch (error) {
-        Toast.fire({
-          icon: 'warning',
-          title: error.error.msg
-        })
+      Toast.fire({
+        icon: 'warning',
+        title: error.error.msg
+      })
     }
   }
   downloadPDF() {
@@ -128,13 +128,13 @@ export class RegistroComponent implements OnInit {
       this.downloadLink.nativeElement.click();
     });
   }
-    // Extraemos el
-    // const DATA = document.getElementById('gafete');
-    // const doc = new jsPDF('p', 'pt', 'a4');
-    // const options = {
-    //   background: 'white',
-    //   scale: 3
-    // };
+  // Extraemos el
+  // const DATA = document.getElementById('gafete');
+  // const doc = new jsPDF('p', 'pt', 'a4');
+  // const options = {
+  //   background: 'white',
+  //   scale: 3
+  // };
 
   //   html2canvas(document.querySelector("#gafete")).then(canvas => {
   //     document.body.appendChild(canvas)
@@ -148,11 +148,11 @@ export class RegistroComponent implements OnInit {
   //     const bufferY = 5;
   //     // const imgProps = (doc as any).getImageProperties(img);
   //     // console.log(imgProps);
-      
+
   //     const pdfWidth = 0;
-      
+
   //     const pdfHeight = 400;
-      
+
   //     doc.addImage(img, 'pdf', bufferX, bufferY, pdfWidth, pdfHeight, 'FAST');
   //     return doc;
   //   }).then((docResult) => {
