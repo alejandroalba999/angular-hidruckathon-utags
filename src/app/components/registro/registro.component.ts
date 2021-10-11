@@ -124,7 +124,7 @@ export class RegistroComponent implements OnInit {
     html2canvas(this.screen.nativeElement).then(canvas => {
       this.canvas.nativeElement.src = canvas.toDataURL();
       this.downloadLink.nativeElement.href = canvas.toDataURL('image/png');
-      this.downloadLink.nativeElement.download = 'gafete-hidrockathon.png';
+      this.downloadLink.nativeElement.download = 'networkingMFD.png';
       this.downloadLink.nativeElement.click();
     });
   }
