@@ -26,6 +26,8 @@ export class PreguntasComponent implements OnInit {
   p1: any = 0;
   arrowButtom: boolean = false;
   preguntaOculta: boolean = false;
+  ultimaPregunta: boolean = false;
+
   constructor(private _encuesta: EncuestaService) { }
   @Input() set obtenerEncuestas(value) {
     this.idParticipante = value.idParticipante;
@@ -47,25 +49,37 @@ export class PreguntasComponent implements OnInit {
 
     }
 
-    console.log(nPregunta + this.arrayRespuestas.length);
-
     const preguntaEncontrada = this.arrayRespuestas.find((res) => res.numeroEncuesta == nEncuesta && res.numeroPregunta == nPregunta)
     if (preguntaEncontrada && this.arrayRespuestas.length > 0) {
-      if (this.arrayRespuestas[nEncuesta > 0 ? nPregunta + 3 : nPregunta] != undefined) {
-        this.arrayRespuestas[nEncuesta > 0 ? nPregunta + 3 : nPregunta].idRespuesta = respuesta;
-      }
+      this.arrayRespuestas = this.arrayRespuestas.map((replace) => {
+        if (replace.idPregunta == pregunta && replace.idEncuesta == encuesta) {
+          return {
+            idEncuesta: replace.idEncuesta,
+            idPregunta: replace.idPregunta,
+            idRespuesta: respuesta, //respuesta nueva
+            idParticipante: replace.idParticipante,
+            numeroEncuesta: replace.numeroEncuesta,
+            numeroPregunta: replace.numeroPregunta,
+            numeroRespuesta: replace.numeroRespuesta
+          }
+        } else {
+          return replace
+        }
+      })
+      // this.arrayRespuestas[nPregunta].idRespuesta = respuesta;
+    }
+    if (nPregunta == 6) {
+      this.ultimaPregunta = true;
     }
     if (!preguntaEncontrada) {
       this.arrayRespuestas.push(resp);
     }
-    if (nRespuesta == 1 && nEncuesta == 1 && nPregunta == 0) {
+    if (nRespuesta == 1 && nEncuesta == 0 && nPregunta == 3) {
       this.opcional = true;
-      console.log('opcional');
-    } else {
-      this.opcional = false;
-      console.log('opcional-false');
     }
-    console.log(this.arrayRespuestas);
+    if (nRespuesta == 0 && nEncuesta == 0 && nPregunta == 3) {
+      this.opcional = false;
+    }
 
 
   }
