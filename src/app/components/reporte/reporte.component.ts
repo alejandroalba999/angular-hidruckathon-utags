@@ -7,7 +7,7 @@ import { ReporteService } from 'src/app/services/reporte.service';
 import { ExportDataService } from '../../services/exports/export-excel.service.ts.service';
 import Swal from 'sweetalert2';
 import { ExportPdfService } from 'src/app/services/exports/export-pdf.service.ts.service';
-
+import { saveAs } from 'file-saver';
 
 const Toast = Swal.mixin({
   toast: true,
@@ -30,6 +30,8 @@ export class ReporteComponent implements OnInit {
   participantes: any = [];
   participantesFilter: any = [];
   p1: any;
+  encuestas: any = [];
+  arrPregunta = [];
 
   constructor(private _reporte: ReporteService, private FilterPipe: FilterPipe, private _exportXLSX: ExportDataService, private _exportPDF: ExportPdfService) { }
 
@@ -46,6 +48,28 @@ export class ReporteComponent implements OnInit {
       console.log(err);
 
     })
+  }
+
+  downloadFile(data: any) {
+    const replacer = (key, value) => (value === null ? '' : value); // specify how you want to handle null values here
+    const header = Object.keys(data[0]);
+    const csv = data.map((row) =>
+      header
+        .map((fieldName) => JSON.stringify(row[fieldName], replacer))
+        .join(',')
+    );
+    csv.unshift(header.join(','));
+    const csvArray = csv.join('\r\n');
+
+    const a = document.createElement('a');
+    const blob = new Blob([csvArray], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+
+    a.href = url;
+    a.download = 'reporteEncuesta-NetworkingMDF.csv';
+    a.click();
+    window.URL.revokeObjectURL(url);
+    a.remove();
   }
 
   findParticipantesConferencia(idConferencia) {
@@ -207,6 +231,28 @@ export class ReporteComponent implements OnInit {
         'landscape'
       );
     }
+  }
+
+  async getEncuesta() {
+
+    this._reporte.getEncuestas().then((res: any) => {
+      this.encuestas = res.cont.encuesta;
+      console.log(this.encuestas);
+      this.encuestas = this.encuestas.map((data) => {
+        let arrEncuesta = data.persona[0].encuesta;
+
+        return {
+          persona: `${data.persona[0].strNombre} ${data.persona[0].strPrimerApellido} ${data.persona[0].strSegundoApellido ? data.persona[0].strSegundoApellido : ''}`,
+          correo: data.persona[0].strCorreo,
+          respuestas: arrEncuesta,
+        }
+      })
+      this.downloadFile(this.encuestas)
+
+    }).catch((err) => {
+      console.log(err);
+
+    })
   }
 
 

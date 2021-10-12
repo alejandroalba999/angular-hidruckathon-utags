@@ -23,5 +23,9 @@ export class ReporteService {
         return this.http.get(`${this.url}/conferencias`, { params: { idConferencia } }).toPromise();
     }
 
+    getEncuestas() {
+        return this.http.get(`${this.url}/reporteEncuesta`).toPromise();
+    }
+
 
 }
