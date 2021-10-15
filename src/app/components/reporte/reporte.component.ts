@@ -43,6 +43,7 @@ export class ReporteComponent implements OnInit {
     this.participantes = [];
     this._reporte.getParticipantes().then((res: any) => {
       this.participantes = res.cont.participantes;
+      console.log(this.participantes);
       this.participantesFilter = res.cont.participantes;
     }).catch((err) => {
       console.log(err);
@@ -260,7 +261,10 @@ export class ReporteComponent implements OnInit {
     try {
 
       if (this.participantes.length !== 0) {
-        this.participantes = this.participantes.map(resp => {
+
+        const exportExcel = this.participantes.map(resp => {
+          // console.log(resp);
+
           let objeto = {};
           for (const [index, conf] of resp.conferencias.entries()) {
             objeto = { ...objeto, ...JSON.parse(`{"Conferencia ${index + 1}":"${conf.strNombre}"}`) }
@@ -275,7 +279,7 @@ export class ReporteComponent implements OnInit {
           }
 
         });
-        this._exportXLSX.exportAsExcelFile(this.participantes, 'Excel de asistencia');
+        this._exportXLSX.exportAsExcelFile(exportExcel, 'Excel de asistencia');
       }
     } catch (error) {
       Toast.fire({
