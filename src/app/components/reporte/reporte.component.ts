@@ -261,23 +261,21 @@ export class ReporteComponent implements OnInit {
 
       if (this.participantes.length !== 0) {
         this.participantes = this.participantes.map(resp => {
-
+          let objeto = {};
+          for (const [index, conf] of resp.conferencias.entries()) {
+            objeto = { ...objeto, ...JSON.parse(`{"Conferencia ${index + 1}":"${conf.strNombre}"}`) }
+          }
           return {
             strNombre: resp.strNombre ? resp.strNombre : '',
             strApellidos: resp.strPrimerApellido ? resp.strPrimerApellido + ' ' + resp.strSegundoApellido : '',
             strNombreEmpresa: resp.strNombreEmpresa ? resp.strNombreEmpresa : '',
             strPuesto: resp.strPuesto ? resp.strPuesto : '',
             strCorreo: resp.strCorreo ? resp.strCorreo : '',
+            ...objeto
           }
-        });
 
-        let jsonobject = JSON.stringify(this.participantes);
-        jsonobject = jsonobject.replace(/strNombre/gi, 'Nombre');
-        jsonobject = jsonobject.replace(/strPrimerApellido/gi, 'Apellidos');
-        jsonobject = jsonobject.replace(/strNombreEmpresa/gi, 'NombreEmpresa');
-        jsonobject = jsonobject.replace(/strPuesto/gi, 'Puesto');
-        jsonobject = jsonobject.replace(/strCorreo/gi, 'Correo');
-        this._exportXLSX.exportAsExcelFile(JSON.parse(jsonobject), 'Excel de asistencia');
+        });
+        this._exportXLSX.exportAsExcelFile(this.participantes, 'Excel de asistencia');
       }
     } catch (error) {
       Toast.fire({
