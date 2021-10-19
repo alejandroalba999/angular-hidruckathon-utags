@@ -30,6 +30,13 @@ img {
     background: linear-gradient(180deg, rgba(16, 46, 138, 1) 0%, rgba(16, 46, 138, 1) 35%, rgba(124, 136, 175, 1) 100%)!important;
 }
 
+.scroll {
+ padding-left: 10%;
+  width: 95%;
+  height: 400px;
+  overflow: scroll;
+}
+
 .noselect {
     cursor: pointer;
     -webkit-touch-callout: none;

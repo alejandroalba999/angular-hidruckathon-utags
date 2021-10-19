@@ -8,6 +8,12 @@ input[type="checkbox"] {
     /* background-color: red; */
     background: linear-gradient(-225deg, rgba(0, 0, 0, 0.6) 50%, rgba(0, 36, 61, 0.6) 80%),
 }
+.scroll {
+ padding-left: 10%;
+  width: 95%;
+  height: 400px;
+  overflow: scroll;
+}
 
 .profile-pic {
     border-radius: 100%;

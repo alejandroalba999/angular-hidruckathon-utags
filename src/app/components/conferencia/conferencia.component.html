@@ -5,14 +5,14 @@
                 <div class="card-body">
 
                     <h4 class="card-tittle text-center mb-5" style="color: #102E8A;">Asistencia</h4>
-                    <div class="col-sm-12 col-12 mb-4">
+                    <div class="col-sm-12 col-md-12 mb-4">
                         <input [(ngModel)]="searchText" type="text" (ngModelChange)="search()" name="searchText"
                             class="form-control form-control-sm f-search" placeholder=" Buscar conferencia...">
                     </div>
-                    <div class="row">
+                    <div class="row scroll">
                         <div *ngFor="let conferencias of arrConferencias; let i = index"
                             class="col-md-4 col-sm-12 mb-2">
-                            <div class="card shadow radio" style="height: 550px;">
+                            <div class="card shadow radio">
                                 <div class="card-body animated fadeIn ">
                                     <div class="row">
                                         <br>
