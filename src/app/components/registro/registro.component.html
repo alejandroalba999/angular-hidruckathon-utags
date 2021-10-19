@@ -148,12 +148,12 @@
 
                     <h4 class="card-tittle text-center mb-5" style="color: #102E8A;">Selecciona las conferencias de tu
                         interés</h4>
-                    <div class="row">
+                    <div class="row scroll">
                         <div *ngFor="let conferencias of arrConferencias; let i = index"
                             class="col-md-6 col-sm-12 mb-2">
                             <div class="card shadow radio">
                                 <div class="card-body animated fadeIn ">
-                                    <div class="row scroll">
+                                    <div class="row ">
                                         <div class="col-md-12 text-right">
                                             <input class="form-check-input" type="checkbox"
                                                 (change)="onCategoriaPressed(conferencias,$event.target.checked)"
